@@ -1,6 +1,6 @@
 ogr2ogr \
   -f GeoJSON \
-  -where "ADM0_A3 IN ('USA','DEU','NLD','BEL','ITA','FRA','CAN','DNK','FIN','ESP','GBR','CHE','CZE','HUN','LUX','SWE','POL','AUT','IRL','AUS','NZL')" \
+  -where "ADM0_A3 IN ('DEU','NLD','BEL','ITA','FRA','DNK','FIN','ESP','ENG','CHE','CZE','SWE','POL','IRL')" \
   eu_subunits.json \
   ne_10m_admin_0_map_subunits.shp
 
@@ -10,7 +10,7 @@ ogr2ogr \
 
 ogr2ogr \
   -f GeoJSON \
-  -where "ISO_A2 IN ('US','DE','NL','BE','IT','FR','CA','DK','FI','ES','GB','CH','CZ','HU','LU','SE','PL','AT','IE','AU','NZ') AND SCALERANK < 5" \
+  -where "ISO_A2 IN ('DE','NL','BE','IT','FR','DK','FI','ES','GB','CH','CZ','SE','PL','IE') AND SCALERANK < 5" \
   eu_places.json \
   ne_10m_populated_places.shp
 
