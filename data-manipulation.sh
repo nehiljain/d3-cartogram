@@ -1,6 +1,6 @@
 ogr2ogr \
   -f GeoJSON \
-  -where "ADM0_A3 IN ('DEU','NLD','BEL','ITA','FRA','DNK','FIN','ESP','ENG','CHE','CZE','SWE','POL','IRL')" \
+  -where "ADM0_A3 IN ('DEU','NLD','BEL','ITA','FRA','DNK','FIN','ESP','GBR','CHE','CZE','SWE','POL','IRL')" \
   eu_subunits.json \
   ne_10m_admin_0_map_subunits.shp
 

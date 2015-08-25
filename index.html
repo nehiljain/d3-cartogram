@@ -148,9 +148,9 @@
 
       var map = d3.select("#map"),
           zoom = d3.behavior.zoom()
-            .translate([-38, 32])
-            .scale(.94)
-            .scaleExtent([0.5, 10.0])
+            .translate([-558, 32])
+            .scale(1.7)
+            .scaleExtent([0.5, 20.0])
             .on("zoom", updateZoom),
           layer = map.append("g")
             .attr("id", "layer"),
@@ -182,7 +182,9 @@
             .value(function(d) {
               console.log(d, dataById[d.id]);
               if (dataById[d.id]) {
-                console.log(dataById[d.id]);
+                // console.log(dataById[d.id]["count"]);
+
+
                 return +dataById[d.id]["count"];
               } else {
                 return 0;
@@ -225,6 +227,7 @@
         states.append("title");
 
         // parseHash();
+        update();
       }
 
       function reset() {
@@ -252,11 +255,11 @@
         var start = Date.now();
         body.classed("updating", true);
 
-        var key,
-            value = function(d) {
+        var value = function(d) {
               console.log(d);
               if (dataById[d.id]) {
-                console.log(dataById[d.id]);
+                d.properties.count = d.properties.count;
+                // console.log(d.properties.count);
                 return +d.properties.count;
               } else {
                 return 0;
@@ -281,10 +284,13 @@
         // normalize the scale to positive numbers
         var scale = d3.scale.linear()
           .domain([lo, hi])
-          .range([1, 7000]);
+          .range([1, 2500]);
 
         // tell the cartogram to use the scaled values
         carto.value(function(d) {
+          console.log("inside scale");
+          console.log(scale(value(d)));
+          // return scale(value(d));
           return scale(value(d));
         });
 
@@ -299,7 +305,7 @@
             });
 
         states.transition()
-          .duration(750)
+          .duration(50)
           .ease("linear")
           .attr("fill", function(d) {
             return color(value(d));
